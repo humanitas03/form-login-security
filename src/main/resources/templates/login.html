@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+<h1>Sign In</h1>
+<th:block th:switch="${#strings.toString(param.err)}">
+    <div th:case="'e002'" >
+        <img src ="https://storage.googleapis.com/jjalbot-jjals/2018/12/BkAApEzgE/20171109_5a03383e9c5c4.gif" th:width="200px" th:height="200px"/>
+        <br>
+        사용자를 찾을 수 없습니다.
+    </div>
+    <div th:case="'e001'" class="alert alert-danger">
+        <img src="https://thumbs.dreamstime.com/b/illustration-red-invalid-sign-stamp-isolated-white-background-174557387.jpg" th:width="200px" th:height="200px"/>
+        <br>
+        Invalid username or password.
+    </div>
+</th:block>
+<form action="/login" th:action="@{/login}" method="post">
+    <p>Username: <input type="text" name="username" /></p>
+    <p>Password: <input type="password" name="password" /></p>
+    <p><input type="submit" value="Login" /></p>
+</form>
+</body>
+</html>
