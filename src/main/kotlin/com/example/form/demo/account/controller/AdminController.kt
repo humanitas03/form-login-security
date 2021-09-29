@@ -12,22 +12,16 @@ class AdminController {
 
     @GetMapping("/")
     fun index(model: Model, @CurrentUser account: Account?): String? {
-        if (account == null) {
-            model.addAttribute("message", "Hello Spring Security")
-        } else {
+        account?.let {
             model.addAttribute("message", "Hello " + account.userName)
+        } ?: run {
+            model.addAttribute("message", "Hello Spring Security")
         }
         return "index"
     }
     @GetMapping("/admin")
-    fun admin(model: Model, principal: Principal): String? {
-        model.addAttribute("message", "Hello admin, " + principal.name)
-        return "admin"
-    }
+    fun admin(model: Model, principal: Principal): String? = model.addAttribute("message", "Hello admin, " + principal.name).run { "admin" }
 
     @GetMapping("/user")
-    fun user(model: Model, principal: Principal): String? {
-        model.addAttribute("message", "Hello" + principal.name)
-        return "user"
-    }
+    fun user(model: Model, principal: Principal): String? = model.addAttribute("message", "Hello" + principal.name).run { "user" }
 }

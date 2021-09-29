@@ -3,7 +3,7 @@ package com.example.form.demo.account
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.User
 
-class UserAccount(account: Account) :
+class UserAccount(val account: Account) :
     User(
         account.userName,
         account.password,

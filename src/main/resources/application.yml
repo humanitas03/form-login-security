@@ -1,3 +1,6 @@
+server:
+  port: 8081
+
 spring:
   jpa:
     show-sql: true
@@ -6,3 +9,12 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
+
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace

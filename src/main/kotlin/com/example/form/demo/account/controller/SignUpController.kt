@@ -15,9 +15,7 @@ class SignUpController @Autowired constructor(
 ) {
 
     @GetMapping("/signup")
-    fun signUpForm(model: Model): String {
-        return model.addAttribute("account", Account(null, null, null, null)).run { "signup" }
-    }
+    fun signUpForm(model: Model): String = model.addAttribute("account", Account(null, null, null, null)).run { "signup" }
 
     @PostMapping("/signup")
     fun processSignUp(@ModelAttribute account: Account): String = Account.registerAdminAccount(account).let {
